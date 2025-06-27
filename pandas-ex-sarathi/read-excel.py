@@ -114,3 +114,7 @@ df["Grade"] = "Grade"
 
  df.loc[df["percentage"] > 75, ["Grade"]] = "Distiction"
 
+##write to excel
+
+df.to_excel("updated_student_records.xlsx")
+df.to_excel("updated_student_records.xlsx", index=False)
