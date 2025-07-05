@@ -15,6 +15,13 @@ df.tail(10)
 df.describe()
 ##shape of dataframe
 df.shape
+##display columns
+df.columns
+
+##convert rows into columns
+df.melt()
+##convert  columns into rows
+df.pivot()
 ##display unique values
 df.unique()
 df['country'].unique()
@@ -33,7 +40,7 @@ df['Telugu'].isnull() ##it will give true or false
 df[df['Telugu'].isnull()] ##this used to print those values if nulls are there
 
 ##Slcing DF
-df[start:stop:step]
+#df[start:stop:step]
 df[0:10:1]
 df[0:10:2]
 
@@ -48,7 +55,7 @@ for row in df.iterrows():
     print(row)
 
 ##loc concepts
-df.loc[row no, [coumn1.cloumn2.....]]
+#df.loc[rowno, [coumn1.cloumn2.....]]
 df.loc[1]
 df.loc[1, ["Telugu"]]
 df.loc[2,"English"]
@@ -121,14 +128,13 @@ print(res)
 
 df["Grade"] = "Grade"
 
- df.loc[df["percentage"] < 40, ["Grade"]] = "Fail"
+df.loc[df["percentage"] < 40, ["Grade"]] = "Fail"
 
- df.loc[(df["percentage"] > 40) & (df["percentage"] < 60), ["Grade"]] = "Pass"
+df.loc[(df["percentage"] > 40) & (df["percentage"] < 60), ["Grade"]] = "Pass"
 
- df.loc[(df["percentage"] > 60) & (df["percentage"] < 75), ["Grade"]] = "First class"
+df.loc[(df["percentage"] > 60) & (df["percentage"] < 75), ["Grade"]] = "First class"
 
-
- df.loc[df["percentage"] > 75, ["Grade"]] = "Distiction"
+df.loc[df["percentage"] > 75, ["Grade"]] = "Distiction"
 
 ##write to excel
 
