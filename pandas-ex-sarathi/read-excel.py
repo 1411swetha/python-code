@@ -15,6 +15,22 @@ df.tail(10)
 df.describe()
 ##shape of dataframe
 df.shape
+##display unique values
+df.unique()
+df['country'].unique()
+##check the count
+df['emp.no'].count()
+df.count()
+##avg salary
+df['salary'].mean()
+##spliting full name to two
+df1= df['student_name'].str.strip()
+firstname= df1.str.split(' ').str[0]
+lastname= df1.str.split(' ').str[1]
+
+##null value checking
+df['Telugu'].isnull() ##it will give true or false
+df[df['Telugu'].isnull()] ##this used to print those values if nulls are there
 
 ##Slcing DF
 df[start:stop:step]
