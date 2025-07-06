@@ -157,3 +157,30 @@ query = "select * from PURCHASER"
 connection = engg.connect()
 target_df = pd.read_sql(query, connection)
 tg_count = target_df.count()
+
+##write-to sql DB 
+from pymysql import connect
+import pandas as pd
+from sqlalchemy import create_engine
+
+# Step 1: Connect to SOURCE database (ZCITY)
+source_engine = create_engine("mysql+pymysql://root:admin123@localhost:3308/ZCITY")
+source_query = "SELECT * FROM PURCHASER"
+source_connection = source_engine.connect()
+
+# Extract data from source
+source_df = pd.read_sql(source_query, source_connection)
+source_connection.close()
+
+# Step 2: Connect to TARGET database (example: TARGETDB)
+target_engine = create_engine("mysql+pymysql://root:admin123@localhost:3308/TARGETDB")
+
+# Load data into target table (e.g., PURCHASER_COPY)
+source_df.to_sql(
+    name='PURCHASER_COPY',    # target table name
+    con=target_engine,
+    if_exists='append',       # use 'replace' if you want to overwrite
+    index=False
+)
+
+print("Data transferred from ZCITY.PURCHASER to TARGETDB.PURCHASER_COPY.")
