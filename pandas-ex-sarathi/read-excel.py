@@ -19,7 +19,7 @@ df.shape
 df.columns
 
 ##convert rows into columns
-df.melt()
+pd.melt()
 ##convert  columns into rows
 df.pivot()
 ##display unique values
@@ -140,3 +140,20 @@ df.loc[df["percentage"] > 75, ["Grade"]] = "Distiction"
 
 df.to_excel("updated_student_records.xlsx")
 df.to_excel("updated_student_records.xlsx", index=False)
+
+###read and write to csv
+df = pd.read_csv("file.csv")
+filter_output = df[df["age"] > 80]
+filter_output.to_csv("out.csv", index=False)
+
+###read and write to DB(mysql)
+from pymysql import connect
+from sqlalchemy import create_engine
+import pandas as pd
+
+engg = create_engine("mysql+pymysql://root:admin123@localhost:3308/ZCITY")
+
+query = "select * from PURCHASER"
+connection = engg.connect()
+target_df = pd.read_sql(query, connection)
+tg_count = target_df.count()
