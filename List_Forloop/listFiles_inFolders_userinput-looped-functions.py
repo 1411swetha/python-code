@@ -6,7 +6,7 @@ def files_listing_error_handling(folder):
     try:
         files = os.listdir(folder)
         return files, None
-    except FileNotFoundError:.
+    except FileNotFoundError:
 
         print("pls check the folder doesnot exist" + folder)
         return None, "Folder not found"
@@ -26,6 +26,6 @@ def main():
         else:
             print(f"files does not exist in {folder}: {Errors}")
 # this if statement is useful when we import into other progame as module.if we only use main() it is useful while we run program directly
-if __name__ == "__main__"
+if __name__ == "__main__":
     main()
 
