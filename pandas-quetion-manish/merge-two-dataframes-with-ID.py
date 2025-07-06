@@ -14,6 +14,7 @@ df2 = pd.DataFrame({
 df_merged = pd.merge(df1,df2, on='id', how='inner')
 print(df_merged)
 
+
 # response:- if we use inner join what ever key value matches those will be merged and remaining ignored
 #    id    name  age  salary
 # 0   1  swetha   10    5000
