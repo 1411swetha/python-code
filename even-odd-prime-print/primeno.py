@@ -1,3 +1,4 @@
+prime_no = []
 for num in range(2,100):
     is_prime = True
     for i in range(2, int(num**0.5) +1):
@@ -6,3 +7,4 @@ for num in range(2,100):
             break
     if is_prime:
         print(num)
+        prime_no.append(num)
